@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<pre>
+1）1、在IE6、7下不区分ID的大小写
+   2、在IE6、7下把表单元素的name当做id(ID不能重复 ID和name也别重复)
+   3、如果js是内嵌式引入的，并且在html标签的下面，我们可以直接用元素的id当做元素的对象使用
+   4、ID不能重复，重复了只能获取第一个
+2）DOM方法
+   [context].getElementsByTagName("标签名称")
+   [context].getElementsByName("元素标签的name属性值")
+   [context].getElementsByClassName("元素标签的样式class的属性值")
+3）事件
+   var cw=document.documentElement.clientWidth || document.body.clientWidth;
+   var ch=document.documentElement.clientHeight || document.body.clientHeight;
+4）移动端经常的用的方法：(IE6~8下不兼容)
+   [context].querySelector()
+   [context].querySelectorAll()
+5）实现获取ele元素距离body的上或者左偏移量
+   IE8不需要加clientLeft值
+6）window.getComputedStyle(元素,元素的伪类(没有写null))
+   currentStyle
+    function getCss(ele,attr){
+        if(window.getComputedStyle){
+            return window.getComputedStyle(ele,null)[attr];
+            }else{
+                return ele.currentStyle[attr];
+            }
+    }
+7）scrollWidth/scrollHeight:如果内容没有溢出的话，相当于client值是一样的（上
+   padding+实际内容的高度）
+   如果内容溢出的话是只加上padding，下padding不加了
+8）e.pageX e.pageY
+   e.relatedTarget
+   var target = e.target|| e.srcElement;
+   ele.attachEvent   ele.addEventListener(type,fn,false);
+   ele.detachEvent   ele.removeEventListener(type,fn,false);
+   e.preventDefault  e.returnValue=false;
+   e.stopPropagation? e.stopPropagation(): e.cancelBubble=true;
+   e=e||window.event;
+   var type = e.type;
+   e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+ e.clientX;
+   e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+ e.clientY;
+   e.stopPropagation=function(){
+      e.cancelable=true;
+   };
+   e.preventDefault=function(){
+      e.returnValue=false;
+   };
+</pre>
+
+</body>
+</html>

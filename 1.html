@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="zepto.min.js"></script>
+    <style>
+        .slide{
+            width: 200px;
+        height: 40px;;
+            background: red;
+            position: relative;
+        }
+        .slide:after{
+            content:'';
+            display: block;
+            width: 40px;
+            height: 40px;
+            left: 0;
+            top: 0;
+            position: absolute;
+            background: yellow;
+            -webkit-transition: 0.2s linear ;
+        }
+        .active{
+            left: 160px;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+<div class="slide">
+</div>
+<script>
+    $('').on('click', function () {$(this).hasClass('active')?$(this).removeClass('active'):$(this).addClass('active')})
+</script>
+
+</body>
+</html>
